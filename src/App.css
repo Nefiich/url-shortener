@@ -1,38 +1,364 @@
+body{
+  font-family: 'Poppins', sans-serif;
+}
+a{
+  text-decoration: none;
+}
+
 .App {
-  text-align: center;
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.container{
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  margin-right: 15vw !important;
+  margin-left: 15vw !important;
+}
+
+.navigation{
+  display: flex;
+  flex-direction: row;
+}
+.nav-links{
+  display:flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-left: 30px;
+
+}
+.nav-links a{
+  color:hsl(0, 0%, 75%);
+}
+.nav-links a :hover{
+  color: black;
+}
+.nav-log-reg{
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+}
+.nav-log-reg a span{
+  margin-left: 20px;
+
+  padding: 10px 30px;
+  background-color: hsl(180, 66%, 49%);
+  border-radius: 40px;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.nav-log-reg a :hover{
+  padding: 13px 33px;
+}
+.nav-log-reg a{
+  color: hsl(0, 0%, 75%);
+}
+.nav-log-reg a:hover{
+  color:black;
+}
+.menu{
+  visibility: hidden;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header{
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 5em;
 }
+.header-right{
+  width: 50%;
+}
+.heading-text{
+  font-size: 7rem;
+  line-height: 8rem;
+  margin: 0;
+}
+.heading-kicker{
+  font-size: 1.5rem;
+  color:hsl(0, 0%, 75%);
+
+  margin-top: 0;
+}
+
+.get-started-container{
+  margin-top: 5em;
+}
+.get-started{
+  padding: 15px 50px;
+  background-color: hsl(180, 66%, 49%);
+  border-radius: 80px;
+  
+  color: white;
+
+  font-size: 1.2rem;
+}
+
+.header-left{
+  margin-left: auto;
+}
+
+
+.input-container-fluid{
+
+  position: relative;
+
+  height: 100px;
+  width: 100%;
+}
+
+.input-container{
+
+  background-color: hsl(257, 27%, 26%);
+  background-image: url(./assets/images/bg-shorten-desktop.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+
+  z-index: 1;
+  position: absolute;
+
+  top: 160%;
+  transform: translate(0%, 0%);
+
+  height: 100px;
+  width: 63vw;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1em 5em;
+}
+.input{
+  width: 100%;
+  height: 3em;
+  border-radius: 10px;
+
+  font-family: 'Poppins', 'sans-serif';
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding-left: 20px;
+}
+.input:focus{
+  outline: none;
+}
+.input-button{
+  padding: 1em 4em;
+
+  font-family: 'Poppins', 'sans-serif';
+  font-weight: 600;
+  font-size: 1rem;
+
+  color: white;
+  background-color: hsl(180, 66%, 49%);
+
+  border-radius: 10px;
+  outline: none;
+  border: 0;
+
+  margin-left: 20px;
+
+  white-space: nowrap;
+}
+
+.container-gray{
+  background-color: hsl(0, 0%, 90%);
+  padding-left: 15vw;
+  padding-right: 15vw;
+
+  margin-top: 8em;
+  padding-top: 8em;
+
+  display: flex;
+  flex-direction: column ;
+}
+.links-container{
+  display: flex;
+  flex-direction: column;
+}
+.link-container{
+  display: flex;
+  flex-direction: row;
+
+  background-color: white;
+  border-radius: 10px;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+.link-container h4{
+  color: hsl(0, 0%, 40%);
+  margin-left: 20px;
+}
+.short-link-container{
+  margin-left: auto;
+  margin-right: 40px;
+  display:flex;
+  flex-direction: row;
+
+  padding: 10px 0;
+
+  
+}
+.short-link-container h4{
+  color:hsl(180, 66%, 49%)
+
+}
+.short-link-container a{
+  padding: 5px 30px;
+
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+
+  color: white;
+  background-color: hsl(180, 66%, 49%);
+
+  margin-left: 20px;
+  font-size: 1rem;
+}
+
+.statistics-container{
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 10em;
+  text-align: center;
+}
+.statistics-container h1{
+  font-size: 3rem;
+  line-height: 2rem;
+}
+.statistics-container h4{
+  color:hsl(0, 0%, 40%);
+  line-height: 1rem;
+}
+.cards-container{
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 8em;
+  margin-bottom: 8em;
+  justify-content: center;
+}
+.card{
+  width: 350px;
+  height: fit-content;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+
+  position:relative;
+
+  margin-right: 20px;
+}
+.card-img-container{
+  background-color: hsl(260, 8%, 14%);
+  padding: 20px 23px;
+  border-radius: 50%;
+
+  width: fit-content;
+
+  position: absolute;
+
+  top: -20%;
+  translate: (0%, 0%);
+}
+
+.card h4{
+  font-size: 1.7rem;
+  margin-top: 40px;
+  line-height: 1.5rem;
+}
+.card h5{
+  font-size: 1rem;
+  color:hsl(0, 0%, 50%);
+  font-weight: 400;
+}
+
+.boost-container{
+  margin: 0;
+  background-color: hsl(257, 27%, 26%);
+  background-image: url(./assets/images/bg-boost-desktop.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex; 
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  height: 300px
+}
+.boost-container h1{
+  color: white;
+  margin-top: 0;
+  padding-top: 40px;
+}
+.boost-container a{
+  padding: 15px 50px;
+  background-color: hsl(180, 66%, 49%);
+  border-radius: 80px;
+  
+  color: white;
+
+  font-size: 1.2rem;
+}
+
+.footer{
+  background-color: hsl(255, 11%, 22%);
+  
+  padding-bottom: 50px;
+  color: white;
+
+}
+.footer-container{
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+
+  margin-right: 15vw;
+  margin-left: 15vw;
+
+}
+.footer-column{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+}
+.footer-column-flex{
+  display:flex;
+  flex-direction: row !important;
+
+  align-items: center;
+}
+.footer-column-flex a{
+  color: white !important;
+}
+.footer-column-flex a:hover{
+  color: hsl(180, 66%, 49%) !important;
+}
+.footer-column a{
+  font-weight: 300;
+  color:hsl(0, 0%, 70%);
+  margin-bottom: 5px;
+}
+.footer-column a:hover{
+  color:hsl(180, 66%, 49%)
+}
+.icon{
+  font-size: 2em;
+  margin: 10px;
+}
+
+.mr-5{
+  margin-right: 2rem;
+}
+
+  
