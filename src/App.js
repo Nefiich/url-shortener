@@ -33,8 +33,10 @@ function App() {
 
   const [links, setLinks] = useState([]);
   const [linkValue, setLinkValue] = useState('');
+  const [linkEmpty, setLinkEmpty] = useState(false);
 
   const cookies = new Cookies();
+  var classnames = require('classnames');
 
   useEffect(() => {
 
@@ -57,20 +59,25 @@ function App() {
     newLinksList.splice(index, 1);
     setLinks(newLinksList);
     cookies.set('linkList', newLinksList, {path: '/' , expires: d})
+
   }
 
   const shortenLink = () =>{
+    console.log("Link Value: " + linkValue)
+    if(linkValue === ""){
+      setLinkEmpty(true);
+    }else{
+      let d = new Date();
+      d.setTime(d.getTime() + (60*60*1000));
 
-    let d = new Date();
-    d.setTime(d.getTime() + (60*60*1000));
+      console.log(linkValue);
+      const random = Math.random().toString(36).substr(2, 5);
+      const newLinksList = [...links, {link: linkValue, shortLink: random}]
+      setLinks(newLinksList);
+      cookies.set('linkList', newLinksList, {path: '/' , expires: d})
 
-    console.log(linkValue);
-    const random = Math.random().toString(36).substr(2, 5);
-    const newLinksList = [...links, {link: linkValue, shortLink: random}]
-    setLinks(newLinksList);
-    cookies.set('linkList', newLinksList, {path: '/' , expires: d})
-
-    console.log(links)
+      console.log(links)
+    }
   }
 
   return (
@@ -127,8 +134,11 @@ function App() {
 
         <div className="input-container-fluid">
           <div className="input-container">
-            <input className="input" type="text" placeholder="Shorten a link here.." value={linkValue} onChange={(e)=>{setLinkValue(e.target.value)}}></input>
+            <div className="form-container">
+            <input className={classnames({ 'input' : true, 'input-red' : linkEmpty})} type="text" placeholder="Shorten a link here.." value={linkValue} onChange={(e)=>{setLinkValue(e.target.value)}}></input>
             <button className="input-button" onClick={() => shortenLink()}>Shorten it!</button>
+            </div>
+            <p className={linkEmpty ? 'empty-link' : 'full-link'}>Please add a link</p>
           </div>
         </div>
       </div>

@@ -144,12 +144,14 @@ ul{
   height: 100px;
   width: 63vw;
 
-  display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
 
-  padding: 1em 5em;
+  padding: 3em 5em 1em 5em;
+}
+.form-container{
+  display: flex;
+  flex-direction: row;
 }
 .input{
   width: 100%;
@@ -163,6 +165,12 @@ ul{
 }
 .input:focus{
   outline: none;
+}
+.input-red{
+  border: 1px solid indianred;
+}
+.input-red::placeholder{
+  color: indianred;
 }
 .input-button{
   padding: 1em 4em;
@@ -182,6 +190,15 @@ ul{
 
   white-space: nowrap;
 }
+.empty-link{
+  display: block;
+  color:indianred;
+  font-style: italic;
+}
+.full-link{
+  display:none;
+}
+
 
 .container-gray{
   background-color: hsl(0, 0%, 90%);
@@ -482,6 +499,9 @@ ul{
     margin-left: auto;
     flex-direction: column;
     height: 20vh;
+  }
+  .form-container{
+    flex-direction: column;
   }
   .input{
     font-size: 0.8rem;
