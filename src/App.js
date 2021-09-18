@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
+import ResponsiveMenu from 'react-responsive-navbar';
 
 import './App.css';
 
 function Card(props){
   return(
-    <div className="card" style={props.top}>
+    <div className={'card ' + props.custom}>
       <div className="card-img-container">
         <img src={"./" + props.img}></img>
       </div>
@@ -40,23 +41,47 @@ function App() {
     console.log(links)
   }
 
+  const openNavBar = () =>{
+
+  }
+
   return (
     <div className="App">
       <div className="container">
-        <div className="navigation">
-          <h1 className="">Shortly</h1>
-          <div className="nav-links">
-            <a href="#"><h4 className="mr-5 nav-link">Features</h4></a>
-            <a href="#"><h4 className="mr-5 nav-link">Pricing</h4></a>
-            <a href="#"><h4 className="mr-5 nav-link">Resources</h4></a>
+        <ResponsiveMenu
+          menuOpenButton={
+          <div className="mobile-navbar">
+            <h1 className="">Shortly</h1>
+            <i className="fas fa-bars menu"></i>
           </div>
-          <div className="nav-log-reg">
-            <a href="#"><h4 className="nav-login">Login</h4></a>
-            <a href="#"><span>Sign Up</span></a>
+        }
+          menuCloseButton={
+            <div className="mobile-navbar">
+            <h1 className="">Shortly</h1>
+            <i className="fas fa-times menu"></i>
           </div>
-          <i className="fas fa-bars menu"></i>
-        </div>
-
+        }
+          changeMenuOn="1130px"
+          largerMenuClassName="navigation-desktop"
+          smallMenuClassName="navigation-mobile"
+          menu={
+            <ul className="navigation">
+              <li><h1 className="desktop-logo">Shortly</h1></li>
+              <div className="nav-links-container">
+                <ul className="nav-links">
+                  <a href="#"><li className="mr-5 nav-link">Features</li></a>
+                  <a href="#"><li className="mr-5 nav-link">Pricing</li></a>
+                  <a href="#"><li className="mr-5 nav-link">Resources</li></a>
+                </ul>
+                <hr className="mobile-hr"/>
+                <ul className="nav-log-reg">
+                  <a href="#"><li className="nav-login">Login</li></a>
+                  <a href="#"><li className="register-button">Sign Up</li></a>
+                </ul>
+              </div>
+            </ul>
+          }
+        />
         <div className="header">
           <div className="header-right">
             <h1 className="heading-text">More than just shorter links</h1>
@@ -67,7 +92,7 @@ function App() {
           </div>
           <div className="header-left">
             <div>
-              <img src="./illustration-working.svg"></img>
+              <img src="./illustration-working.svg" className="header-img"></img>
             </div>
           </div> 
         </div>
@@ -95,8 +120,8 @@ function App() {
 
         <div className="cards-container">
           <Card header="Brand Recognition" desc="Boost your brand recognition with each click. Generic links don't mean a thing. Brended links helllp instil confidlence in your content." img ="icon-brand-recognition.svg"/>
-          <Card top={{marginTop: '2em'}} header="Detailed Records" desc="Gain Insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions." img="icon-detailed-records.svg"/>
-          <Card top={{marginTop: '4em'}} header="Full Customizable" desc="Improve brand awareness and content discoverability through comizable links, superchargning audience engagement" img="icon-fully-customizable.svg"/>
+          <Card custom="mt-6" header="Detailed Records" desc="Gain Insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions." img="icon-detailed-records.svg"/>
+          <Card custom="mt-6" header="Full Customizable" desc="Improve brand awareness and content discoverability through comizable links, superchargning audience engagement" img="icon-fully-customizable.svg"/>
         </div>
       </div>
 

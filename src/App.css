@@ -4,6 +4,9 @@ body{
 a{
   text-decoration: none;
 }
+ul{
+  list-style-type: none;
+}
 
 .App {
   
@@ -14,13 +17,19 @@ a{
   display: flex;
   flex-direction: column;
 
-  margin-right: 15vw !important;
-  margin-left: 15vw !important;
+  margin-right: 15vw;
+  margin-left: 15vw;
 }
 
 .navigation{
   display: flex;
   flex-direction: row;
+
+  width: 100%;
+}
+.nav-links-container{
+  width: 100%;
+  display: flex;
 }
 .nav-links{
   display:flex;
@@ -39,16 +48,14 @@ a{
   margin-left: auto;
   align-items: center;
 }
-.nav-log-reg a span{
+.register-button{
   margin-left: 20px;
+  margin-right: 20px;
 
   padding: 10px 30px;
   background-color: hsl(180, 66%, 49%);
   border-radius: 40px;
   color: white;
-}
-.nav-log-reg a :hover{
-  padding: 13px 33px;
 }
 .nav-log-reg a{
   color: hsl(0, 0%, 75%);
@@ -56,8 +63,21 @@ a{
 .nav-log-reg a:hover{
   color:black;
 }
+.mobile-navbar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 .menu{
-  visibility: hidden;
+  font-size: 2rem;
+  margin-left: auto;
+}
+.mobile-hr{
+  display: none;
+}
+.navigation-desktop{
+  display: flex;
 }
 
 .header{
@@ -247,7 +267,7 @@ a{
 }
 .card{
   width: 350px;
-  height: fit-content;
+  height: 200px;
   background-color: white;
   border-radius: 10px;
   padding: 20px;
@@ -362,3 +382,152 @@ a{
 }
 
   
+@media only screen and (max-width: 1130px) {
+  .container{
+    margin-right: 5vw !important;
+    margin-left: 5vw !important;
+  }
+  .navigation{
+    flex-direction: column;
+    background-color: hsl(260, 8%, 14%);
+    border-radius: 10px;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+  }
+  .nav-links-container{
+    flex-direction: column;
+  }
+  .nav-links{
+    display:block;
+    margin-left: 0;
+  }
+  .nav-log-reg{
+    margin-right: auto;
+    display: block;
+    padding-left: 0;
+
+    border-top: 1px solid hsl(255, 11%, 22%);
+  }
+  .nav-log-reg a li{
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+  }
+  .register-button{
+    margin-bottom: 20px;
+  }
+  .desktop-logo{
+    display: none;
+  }
+  .nav-links a li{
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+  }
+  .mobile-hr{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    height: 1px;
+    border: 0;
+
+    background-color: hsl(260, 7%, 42%);
+
+    display: block;
+  }
+
+
+  .header{
+    flex-direction: column-reverse;
+  }
+  .header-right{
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .heading-text{
+    font-size: 3rem;
+    line-height: 3.3rem;
+  }
+  .header-img{
+    width: 400px;
+    height: auto;
+  }
+  .input-container{
+    width: 50vw;
+    top: 140%;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    flex-direction: column;
+    height: 20vh;
+  }
+  .input{
+    font-size: 0.8rem;
+    width: inherit;
+    height: 5em;
+  }
+  .input-button{
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+
+  .link-container{
+    margin-top: 2em;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+  }
+  .short-link-container{
+    display: block;
+    flex-direction: column;
+    margin:0;
+    width: 100%;
+    border-top: 1px solid hsl(255, 11%, 22%);
+  }
+  .short-link-container a{
+
+    text-align: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-right: 20px;
+  }
+
+
+  .cards-container{
+    flex-direction: column;
+  }
+  .card{
+    width: 85%;
+    height: 300px;
+    margin-top: 4em;
+
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .mt-6{
+    margin-top:6em !important;
+  }
+  .boost-container h1{
+    font-size: 1.5rem;
+  }
+  .footer-container{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-column{
+    margin-left: 0;
+  }
+  .footer-column-flex{
+    margin-top: 20px;
+  }
+}
+
