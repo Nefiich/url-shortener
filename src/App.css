@@ -227,7 +227,7 @@ ul{
   color:hsl(180, 66%, 49%)
 
 }
-.short-link-container a{
+.copy-link{
   padding: 5px 30px;
 
   border-radius: 20px;
@@ -241,6 +241,21 @@ ul{
   margin-left: 20px;
   font-size: 1rem;
 }
+.delete-link{
+  padding: 5px 30px;
+
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+
+  color: white;
+  background-color: hsl(0, 70%, 43%);
+
+  margin-left: 20px;
+  font-size: 1rem;
+}
+
 
 .statistics-container{
   display: flex;
@@ -492,12 +507,20 @@ ul{
     width: 100%;
     border-top: 1px solid hsl(255, 11%, 22%);
   }
-  .short-link-container a{
+  .copy-link{
 
     text-align: center;
     justify-content: center;
     border-radius: 5px;
     margin-right: 20px;
+  }
+  .delete-link{
+
+    text-align: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-top: 10px
   }
 
 

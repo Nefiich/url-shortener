@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ResponsiveMenu from 'react-responsive-navbar';
 
 import './App.css';
+import Cookies from 'universal-cookie';
 
 function Card(props){
   return(
     <div className={'card ' + props.custom}>
       <div className="card-img-container">
-        <img src={"./" + props.img}></img>
+        <img alt="card-img" src={"./" + props.img}></img>
       </div>
       <h4>{props.header}</h4>
       <h5>{props.desc}</h5>
@@ -21,7 +22,8 @@ function ShortLink(props){
       <h4>{props.link}</h4>
       <div className="short-link-container">
         <h4>{'https://short.ly/'+props.shortLink}</h4>
-        <a href="#">Copy</a>
+        <a className="copy-link" onClick={props.onClickCopy}>Copy</a>
+        <a className="delete-link" onClick={props.onClick}>X</a>
       </div>
     </div>
   );
@@ -32,17 +34,43 @@ function App() {
   const [links, setLinks] = useState([]);
   const [linkValue, setLinkValue] = useState('');
 
+  const cookies = new Cookies();
+
+  useEffect(() => {
+
+    const getCookies = cookies.get('linkList');
+    setLinks(getCookies)
+  }, [])
+
+  const copyLink = (link) =>{
+    navigator.clipboard.writeText('https://short.ly/'+link);
+
+    console.log("Copied!")
+  }
+
+  const removeLink = (index) =>{
+
+    let d = new Date();
+    d.setTime(d.getTime() + (60*60*1000));
+
+    const newLinksList = [...links];
+    newLinksList.splice(index, 1);
+    setLinks(newLinksList);
+    cookies.set('linkList', newLinksList, {path: '/' , expires: d})
+  }
+
   const shortenLink = () =>{
+
+    let d = new Date();
+    d.setTime(d.getTime() + (60*60*1000));
+
     console.log(linkValue);
     const random = Math.random().toString(36).substr(2, 5);
     const newLinksList = [...links, {link: linkValue, shortLink: random}]
     setLinks(newLinksList);
+    cookies.set('linkList', newLinksList, {path: '/' , expires: d})
 
     console.log(links)
-  }
-
-  const openNavBar = () =>{
-
   }
 
   return (
@@ -92,7 +120,7 @@ function App() {
           </div>
           <div className="header-left">
             <div>
-              <img src="./illustration-working.svg" className="header-img"></img>
+              <img alt="illustration" src="./illustration-working.svg" className="header-img"></img>
             </div>
           </div> 
         </div>
@@ -109,7 +137,7 @@ function App() {
         <div className="links-container">
           {
           links.map((link, index) =>
-          <ShortLink link={link.link} key={index} shortLink={link.shortLink}/>
+          <ShortLink link={link.link} key={index} shortLink={link.shortLink} onClick={() =>{removeLink(index)}} onClickCopy={() => {copyLink(link.shortLink)}}/>
         )}
         </div>
 
