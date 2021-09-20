@@ -41,13 +41,20 @@ function App() {
   useEffect(() => {
 
     const getCookies = cookies.get('linkList');
-    setLinks(getCookies)
+
+    console.log("cookies : " + JSON.stringify(getCookies))
+    if(getCookies === undefined){
+      console.log("There is nothing!")
+      setLinks([])
+    }else{
+      console.log("there is something!")
+      setLinks(getCookies)
+    }
+    
   }, [])
 
   const copyLink = (link) =>{
     navigator.clipboard.writeText('https://short.ly/'+link);
-
-    console.log("Copied!")
   }
 
   const removeLink = (index) =>{
@@ -63,20 +70,18 @@ function App() {
   }
 
   const shortenLink = () =>{
-    console.log("Link Value: " + linkValue)
     if(linkValue === ""){
       setLinkEmpty(true);
     }else{
+      console.log("Before : "+links)
+
       let d = new Date();
       d.setTime(d.getTime() + (60*60*1000));
 
-      console.log(linkValue);
       const random = Math.random().toString(36).substr(2, 5);
       const newLinksList = [...links, {link: linkValue, shortLink: random}]
       setLinks(newLinksList);
       cookies.set('linkList', newLinksList, {path: '/' , expires: d})
-
-      console.log(links)
     }
   }
 
@@ -146,9 +151,11 @@ function App() {
 
         <div className="links-container">
           {
-          links.map((link, index) =>
-          <ShortLink link={link.link} key={index} shortLink={link.shortLink} onClick={() =>{removeLink(index)}} onClickCopy={() => {copyLink(link.shortLink)}}/>
-        )}
+            links ? 
+              links.map((link, index) =>
+              <ShortLink link={link.link} key={index} shortLink={link.shortLink} onClick={() =>{removeLink(index)}} onClickCopy={() => {copyLink(link.shortLink)}}/>
+              ) : null
+              }
         </div>
 
         <div className="statistics-container">
