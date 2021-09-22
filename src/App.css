@@ -19,6 +19,8 @@ ul{
 
   margin-right: 15vw;
   margin-left: 15vw;
+
+
 }
 
 .navigation{
@@ -26,6 +28,8 @@ ul{
   flex-direction: row;
 
   width: 100%;
+
+  overflow: hidden;
 }
 .nav-links-container{
   width: 100%;
